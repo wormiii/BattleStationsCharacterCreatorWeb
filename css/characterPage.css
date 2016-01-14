@@ -1,0 +1,11 @@
+#characterpage .maincontainer
+{
+	display: flex;
+	flex-direction: row;
+}
+
+#characterpage .charactersection
+{
+	display: flex;
+	flex-direction: column;
+}
