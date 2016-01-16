@@ -11,8 +11,8 @@ requirejs.config({
 });
 
 require(
-['knockout', 'lodash', './js/indexViewModel', './js/starterPage', './js/characterPage'], 
-function(ko, _, indexViewModel, starterPageViewModel, characterPageViewModel) 
+['knockout', 'jquery', 'lodash', './js/indexViewModel', './js/starterPage', './js/characterPage'], 
+function(ko, $, _, indexViewModel, starterPageViewModel, characterPageViewModel) 
 {
     var vm = new indexViewModel();
 
