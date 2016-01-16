@@ -16,6 +16,25 @@ function(ko, _, indexViewModel, starterPageViewModel, characterPageViewModel)
 {
     var vm = new indexViewModel();
 
+
+    var textToLocalizedText = function(text)
+    {
+        var thetext = vm.selectedlanguage()[text];
+        return thetext;
+    }
+    ko.bindingHandlers.localizedtext = 
+    {
+        init: function(element, valueAccessor, allBindings, viewModel, bindingContext)
+        {
+        },
+        update: function(element, valueAccessor, allBindings, viewModel, bindingContext)
+        {
+            var value = ko.unwrap(valueAccessor());
+            var localizedText = textToLocalizedText(value);
+            $(element).text(localizedText);
+        }
+    };
+
     ko.components.register('starterpage', 
     {
         viewModel: 

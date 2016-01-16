@@ -1,8 +1,15 @@
 <div>
 	<p>
-	<button data-bind="click: newCharacter">Start new</button>
-</p>
-<p>
-	<button data-bind="click: loadCharacter">load</button>
-</p>
+		<select data-bind="
+			options: indexViewModel.languages,
+			optionsText: 'languageName',
+			value: indexViewModel.selectedlanguage">
+		</select>
+	</p>
+	<p>
+		<button data-bind="click: newCharacter, localizedtext: 'starterpage.startnew'"></button>
+	</p>
+	<p>
+		<button data-bind="click: loadCharacter, localizedtext: 'starterpage.loadcharacter'"></button>
+	</p>
 </div>

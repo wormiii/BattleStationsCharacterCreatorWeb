@@ -1,6 +1,6 @@
 define(
-["knockout"], 
-function(ko) 
+['knockout', 'text!../language/en-us', 'text!../language/pg-lt'], 
+function(ko, en_ustext, pg_lttext) 
 {
 
 function indexViewModel()
@@ -9,17 +9,19 @@ function indexViewModel()
 
     self.showStarterPage = ko.observable(true);
 
+    var currentlanguage;
 
+    self.languages = ko.observableArray();
+    self.selectedlanguage = ko.observable();
 
-    /*
-    self.mainvm = ko.observable(mainvm);
-    self.index = index;
-    self.visible = ko.observable(false);  
-    self.selectpage = function()
-    {
-        selectthispage(index);
-    };
-    */
+    // en-us
+    currentlanguage = $.parseJSON(en_ustext);
+    self.languages().push(currentlanguage);
+    self.selectedlanguage(currentlanguage);
+
+    // pg_lt
+    currentlanguage = $.parseJSON(pg_lttext);
+    self.languages().push(currentlanguage);
 }
 
 return indexViewModel;
