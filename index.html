@@ -9,19 +9,20 @@
   </head>
 <body>
 
-<div class="flexbox-parent">
+<div id="indexdiv">
+  <!--
     <div class="flexbox-item header">
-        Header
     </div>
+  -->
     
-    <div class="flexbox-item fill-area content flexbox-item-grow">
-        <div class="fill-area-content flexbox-item-grow">
+    <div class="indexflexbox-item indexfill-area indexflexbox-item-grow">
+        <div class="indexfill-area-content indexflexbox-item-grow">
           <characterpage data-bind="visible: !showStarterPage()" ></characterpage>
           <starterpage data-bind="visible: showStarterPage"></starterpage>
         </div>
     </div>
     
-    <div class="flexbox-item footer">
+    <div class="indexflexbox-item">
       <navigationsection></navigationsection>
     </div>
 </div>
