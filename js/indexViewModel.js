@@ -7,10 +7,12 @@ function indexViewModel()
 {
     var self = this;
 
+
+    //
+    // localization stuff
+    //
     self.showStarterPage = ko.observable(true);
-
     var currentlanguage;
-
     self.languages = ko.observableArray();
     self.selectedlanguage = ko.observable();
 
@@ -18,6 +20,7 @@ function indexViewModel()
     currentlanguage = $.parseJSON(en_ustext);
     self.languages().push(currentlanguage);
     self.selectedlanguage(currentlanguage);
+    self.enus = ko.observable(currentlanguage);
 
     // pg_lt
     currentlanguage = $.parseJSON(pg_lttext);

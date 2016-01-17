@@ -11,17 +11,12 @@ requirejs.config({
 });
 
 require(
-['knockout', 'jquery', 'lodash', './js/indexViewModel', './js/starterPage', './js/characterPage'], 
-function(ko, $, _, indexViewModel, starterPageViewModel, characterPageViewModel) 
+['knockout', 'jquery', 'lodash', './js/indexViewModel', './js/starterPage', './js/characterPage', './js/navigationsection'], 
+function(ko, $, _, indexViewModel, starterPageViewModel, characterPageViewModel, navigationSectionViewModel) 
 {
     var vm = new indexViewModel();
 
-
-    var textToLocalizedText = function(text)
-    {
-        var thetext = vm.selectedlanguage()[text];
-        return thetext;
-    }
+    // localized text binder
     ko.bindingHandlers.localizedtext = 
     {
         init: function(element, valueAccessor, allBindings, viewModel, bindingContext)
@@ -30,11 +25,20 @@ function(ko, $, _, indexViewModel, starterPageViewModel, characterPageViewModel)
         update: function(element, valueAccessor, allBindings, viewModel, bindingContext)
         {
             var value = ko.unwrap(valueAccessor());
-            var localizedText = textToLocalizedText(value);
+            var localizedText = vm.selectedlanguage()[value];
+            if (localizedText == null)
+            {
+                localizedText = vm.enus()[value];
+                if (localizedText == null)
+                {
+                    localizedText = "no localized text for this field, please file a bug report";
+                }
+            }
             $(element).text(localizedText);
         }
     };
 
+    // start page - what shows up first
     ko.components.register('starterpage', 
     {
         viewModel: 
@@ -47,6 +51,7 @@ function(ko, $, _, indexViewModel, starterPageViewModel, characterPageViewModel)
         template: {require: "text!./html/starterPage.html" }
     });
 
+    // main section that users create character
     ko.components.register('characterpage', 
     {
         viewModel: 
@@ -59,51 +64,18 @@ function(ko, $, _, indexViewModel, starterPageViewModel, characterPageViewModel)
         template: {require: "text!./html/characterPage.html" }
     });
 
-    /*
-    var selectpage = function(index)
-    {
-        _.forEach(vm.pages(),
-            function(item)
-            {
-                item.visible(false);
-            }
-        );
-        var itemtoshow = _.find(vm.pages(),
-            function(item)
-            {
-                return item.index == index;
-            }
-        );
-        itemtoshow.visible(true);
-    }
-
-    vm.pages().push(new page1vmctor(vm, 0, selectpage));
-    vm.pages().push(new page2vmctor(vm, 1, selectpage));
-
-    ko.components.register('page1stuff', 
+    // navigation section at the bottom
+    ko.components.register('navigationsection', 
     {
         viewModel: 
         {
             createViewModel: function(params, componentInfo) 
             {
-                return vm.pages()[0];
+                return new navigationSectionViewModel(vm);
             }
         },
-        template: {require: "text!./page1.html" }
+        template: {require: "text!./html/navigationsection.html" }
     });
-
-    ko.components.register('page2stuff', 
-    {
-        viewModel: 
-        {
-            createViewModel: function(params, componentInfo) 
-            {
-                return vm.pages()[1];
-            }
-        },
-        template: {require: "text!./page2.html" }
-    });
-    */
 
     ko.applyBindings(vm);
 });

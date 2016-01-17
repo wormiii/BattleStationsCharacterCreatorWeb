@@ -3,5 +3,9 @@
 	"languageName": "English",
 	"starterpage.startnew": "Start New Character",
 	"starterpage.loadcharacter": "Load Exisiting Character",
+	"navigation.startover": "Start Over",
+	"navigation.printcharacter": "Print Character",
+	"navigation.gotogorilla": "Gorilla Games",
+	"navigation.bugreport": "Report Bug",
 	"test.test": "test"
 }

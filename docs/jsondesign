@@ -1,0 +1,16 @@
+character
+	player
+	name
+	rank
+	credits
+	xp
+	prestige
+	species
+	class
+	specialabilities
+	items
+
+
+
+species
+	specialabilities

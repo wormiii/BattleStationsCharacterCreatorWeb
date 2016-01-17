@@ -1,0 +1,34 @@
+html, body
+{
+    width: 100%;
+    height: 100%;
+    
+    margin: 0;
+    padding: 0;
+}
+
+#indexdiv
+{
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    
+    //justify-content: flex-start;
+    //align-items: stretch;
+    //align-content: stretch;
+}
+
+
+.flexfill
+{
+    flex: 1; 
+}
+
+.flexbox-item
+{
+    padding: 8px;
+}
+
+

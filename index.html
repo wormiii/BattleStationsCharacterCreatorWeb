@@ -3,15 +3,37 @@
   <head>
     <meta charset="utf-8">
     <title>Battlestations Character Generator</title>
+    <link rel="stylesheet" type="text/css" href="./css/debug.css">
+    <link rel="stylesheet" type="text/css" href="./css/index.css">
     <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.22/require.min.js"></script>
   </head>
 <body>
 
-  <div data-bind="visible: showStarterPage">
-    <starterpage></starterpage>
-  </div>
-  <div data-bind="visible: !showStarterPage()">
-    <characterpage></characterpage>
+  <div id="indexdiv" class="redborder">
+    <div class="redborder flexbox-item">
+      <span>header</span>
+    <div>
+
+    <!-- upper section -->
+    <!--
+    <div id="maindiv">
+      <div data-bind="visible: showStarterPage">
+        <starterpage class="flexfill"></starterpage>
+      </div>
+      <div data-bind="visible: !showStarterPage()">
+        <characterpage class="flexfill"></characterpage>
+      </div>
+    </div>
+  -->
+    <div class="flexfill redborder flexbox-item">
+      <characterpage data-bind="visible: !showStarterPage()" ></characterpage>
+      <starterpage data-bind="visible: showStarterPage"></starterpage>
+    </div>
+
+    <!-- bottom navigation section with various actions -->
+    <div class="redborder flexbox-item">
+      <navigationsection></navigationsection>
+    </div>
   </div>
 
   <!-- imports -->
