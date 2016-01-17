@@ -8,6 +8,8 @@ function characterPageViewModel(indexViewModel)
     var self = this;
     self.indexViewModel = indexViewModel;
 
+    self.characterAttributes = ko.observableArray([]);
+
     // list of character attributes selectable
     ko.components.register('characterattributelist', 
     {
