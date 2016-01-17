@@ -1,11 +1,34 @@
-#characterpage .maincontainer
+#characterpage
 {
-	display: flex;
-	flex-direction: row;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch;
 }
 
-#characterpage .charactersection
+#characterpage .indexflexbox-item
 {
-	display: flex;
-	flex-direction: column;
+    padding: 8px;
+}
+
+#characterpage .indexflexbox-item-grow
+{
+    flex: 1;
+}
+
+#characterpage .indexfill-area
+{
+    display: flex;
+    flex-direction: column;    
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch;
+}
+
+#characterpage .indexfill-area-content
+{
+    overflow: auto; 
 }
