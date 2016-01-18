@@ -1,6 +1,6 @@
 define(
-['knockout', '../js/characterattributelist'], 
-function(ko, characterAttributeListViewModel) 
+['knockout', 'lodash', '../js/characterattributelist', '../js/charactergeneral', '../js/characteritems'], 
+function(ko, _, characterAttributeListViewModel, charactergeneralViewModel, characteritemsViewModel) 
 {
 
 function characterPageViewModel(indexViewModel)
@@ -8,7 +8,31 @@ function characterPageViewModel(indexViewModel)
     var self = this;
     self.indexViewModel = indexViewModel;
 
-    self.characterAttributes = ko.observableArray([]);
+    self.characterAttributes = ko.observableArray([
+    	new charactergeneralViewModel(indexViewModel, self),
+    	new characteritemsViewModel(indexViewModel, self)
+    ]);
+
+	_.forEach(
+		self.characterAttributes(), 
+		function(item)
+		{
+			item.pageVisible = ko.observable(false);
+			item.selectPage = function()
+			{
+				_.forEach(
+					self.characterAttributes(),
+					function(subItem)
+					{
+						subItem.pageVisible(false);
+					}
+				);
+				item.pageVisible(true);
+			};
+		}
+	);
+
+    self.characterAttributes()[0].selectPage();
 
     // list of character attributes selectable
     ko.components.register('characterattributelist', 
@@ -17,7 +41,7 @@ function characterPageViewModel(indexViewModel)
         {
             createViewModel: function(params, componentInfo) 
             {
-                return new characterAttributeListViewModel(indexViewModel);
+                return new characterAttributeListViewModel(indexViewModel, self);
             }
         },
         template: {require: "text!./html/characterattributelist.html" }
@@ -30,7 +54,7 @@ function characterPageViewModel(indexViewModel)
         {
             createViewModel: function(params, componentInfo) 
             {
-                return new characterAttributeListViewModel(indexViewModel);
+            	return self.characterAttributes()[0];
             }
         },
         template: {require: "text!./html/charactergeneral.html" }
@@ -43,7 +67,7 @@ function characterPageViewModel(indexViewModel)
         {
             createViewModel: function(params, componentInfo) 
             {
-                return new characterAttributeListViewModel(indexViewModel);
+            	return self.characterAttributes()[1];
             }
         },
         template: {require: "text!./html/characteritems.html" }

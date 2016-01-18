@@ -1,12 +1,19 @@
 {
 	"code": "en-us",
 	"languageName": "English",
+	
 	"starterpage.startnew": "Start New Character",
 	"starterpage.loadcharacter": "Load Exisiting Character",
+	
 	"navigation.startover": "Start Over",
 	"navigation.printcharacter": "Print Character",
 	"navigation.gotogorilla": "Gorilla Games",
 	"navigation.gotoetcher2games": "Etcher 2 Games",
 	"navigation.bugreport": "Report Bug",
+
+	"character.section.general": "General",
+	"character.section.items": "Items",
+	"character.section.specialabilities": "Special Abilities",
+
 	"test.test": "test"
 }
