@@ -11,7 +11,7 @@ requirejs.config({
 });
 
 require(
-['knockout', 'jquery', 'lodash', './js/indexViewModel', './js/starterPage', './js/characterPage', './js/navigationsection'], 
+['knockout', 'jquery', 'lodash', './js/indexViewModel', './js/starterPage', './js/characterpage', './js/navigationsection'], 
 function(ko, $, _, indexViewModel, starterPageViewModel, characterPageViewModel, navigationSectionViewModel) 
 {
     var vm = new indexViewModel();
@@ -61,7 +61,7 @@ function(ko, $, _, indexViewModel, starterPageViewModel, characterPageViewModel,
                 return new characterPageViewModel(vm);
             }
         },
-        template: {require: "text!./html/characterPage.html" }
+        template: {require: "text!./html/characterpage.html" }
     });
 
     // navigation section at the bottom
