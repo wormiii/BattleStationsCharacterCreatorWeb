@@ -1,7 +1,26 @@
 {
 	"code": "pg-lt",
 	"languageName": "Pig Latin",
+
 	"starterpage.startnew": "Tartsay Ewnay Aracterchay",
 	"starterpage.loadcharacter": "Oadlay Existingay Aracterchay",
-	"test.test": "esttay"
+	
+	"navigation.startover": "Tartstay Overay",
+	"navigation.printcharacter": "Rintpay Aracterchay",
+	"navigation.gotogorilla": "Orillagay Amesgay",
+	"navigation.gotoetcher2games": "Etcheray 2ay Amesgay",
+	"navigation.bugreport": "Eportray Ugbay",
+
+	"character.section.general.label": "Eneralgay",
+	"character.section.general.player": "Layerpay",
+	"character.section.general.name": "Amenay",
+	"character.section.general.credits": "Reditscay",
+	"character.section.general.xp": "XPay",
+	"character.section.general.prestige": "Restigepay",
+	"character.section.general.rank": "Ankray",
+
+	"character.section.items.label": "Itemsay",
+	"character.section.specialabilities.label": "Pecialsay Abilitiesay",
+
+	"test.test": "Esttay"
 }
