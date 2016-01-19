@@ -1,6 +1,6 @@
 define(
-["knockout"], 
-function(ko) 
+['knockout', '../js/character'], 
+function(ko, characterViewModel) 
 {
 
 function starterPageViewModel(indexViewModel)
@@ -10,11 +10,16 @@ function starterPageViewModel(indexViewModel)
 
     self.newCharacter = function()
     {
+        var character = new characterViewModel(indexViewModel);
+        self.indexViewModel.character(character);
         self.indexViewModel.showStarterPage(false);
     }
 
     self.loadCharacter = function()
     {
+        var character = new characterViewModel(indexViewModel);
+        //todo: load stuff
+        self.indexViewModel.character(character);
         self.indexViewModel.showStarterPage(false);
     }
 }

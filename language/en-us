@@ -11,9 +11,16 @@
 	"navigation.gotoetcher2games": "Etcher 2 Games",
 	"navigation.bugreport": "Report Bug",
 
-	"character.section.general": "General",
-	"character.section.items": "Items",
-	"character.section.specialabilities": "Special Abilities",
+	"character.section.general.label": "General",
+	"character.section.general.player": "Player",
+	"character.section.general.name": "Name",
+	"character.section.general.credits": "Credits",
+	"character.section.general.xp": "XP",
+	"character.section.general.prestige": "Prestige",
+	"character.section.general.rank": "Rank",
+
+	"character.section.items.label": "Items",
+	"character.section.specialabilities.label": "Special Abilities",
 
 	"test.test": "test"
 }

@@ -1,3 +1,26 @@
 <div data-bind="visible: pageVisible">
-	<p><span data-bind="text: bbb"></span></p>
+	<p>
+		<span data-bind="localizedtext: 'character.section.general.player'"></span>
+		<input data-bind="value: indexViewModel().character().player"></input>
+	</p>
+	<p>
+		<span data-bind="localizedtext: 'character.section.general.name'"></span>
+		<input data-bind="value: indexViewModel().character().name"></input>
+	</p>
+	<p>
+		<span data-bind="localizedtext: 'character.section.general.rank'"></span>
+		<input data-bind="value: indexViewModel().character().rank"></input>
+	</p>
+	<p>
+		<span data-bind="localizedtext: 'character.section.general.credits'"></span>
+		<input data-bind="value: indexViewModel().character().credits"></input>
+	</p>
+	<p>
+		<span data-bind="localizedtext: 'character.section.general.xp'"></span>
+		<input data-bind="value: indexViewModel().character().xp"></input>
+	</p>
+	<p>
+		<span data-bind="localizedtext: 'character.section.general.prestige'"></span>
+		<input data-bind="value: indexViewModel().character().prestige"></input>
+	</p>
 </div>

@@ -1,12 +1,13 @@
 define(
-['knockout', 'text!../language/en-us', 'text!../language/pg-lt'], 
-function(ko, en_ustext, pg_lttext) 
+['knockout', '../js/character', 'text!../language/en-us', 'text!../language/pg-lt'], 
+function(ko, characterViewModel, en_ustext, pg_lttext) 
 {
 
 function indexViewModel()
 {
     var self = this;
 
+    self.character = ko.observable(new characterViewModel(self));
 
     //
     // localization stuff
