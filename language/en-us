@@ -10,6 +10,7 @@
 	"navigation.gotogorilla": "Gorilla Games",
 	"navigation.gotoetcher2games": "Etcher 2 Games",
 	"navigation.bugreport": "Report Bug",
+	"navigation.savecharacter": "Save Character",
 
 	"character.section.general.label": "General",
 	"character.section.general.player": "Player",

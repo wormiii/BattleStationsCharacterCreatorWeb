@@ -4,10 +4,6 @@
 		enable: !indexViewModel.showStarterPage(),
 		click: navigationStartover"></button>
 	<button data-bind="
-		localizedtext: 'navigation.printcharacter',
-		enable: !indexViewModel.showStarterPage(),
-		click: navigationPrintcharacter"></button>
-	<button data-bind="
 		localizedtext: 'navigation.gotogorilla', 
 		click: navigationGotogorilla"></button>
 	<button data-bind="
@@ -16,4 +12,12 @@
 	<button data-bind="
 		localizedtext: 'navigation.bugreport', 
 		click: navigationBugreport"></button>
+	<button data-bind="
+		localizedtext: 'navigation.printcharacter',
+		enable: !indexViewModel.showStarterPage(),
+		click: navigationPrintcharacter"></button>
+	<button data-bind="
+		localizedtext: 'navigation.savecharacter',
+		enable: !indexViewModel.showStarterPage(), 
+		click: navigationSaveCharacter"></button>
 </div>
