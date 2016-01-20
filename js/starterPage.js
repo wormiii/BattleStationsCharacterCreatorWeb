@@ -18,10 +18,12 @@ function starterPageViewModel(indexViewModel)
     self.loadCharacter = function()
     {
         var character = new characterViewModel(indexViewModel);
-        //todo: load stuff
+        character.loadFromFile(self.filename());
         self.indexViewModel.character(character);
         self.indexViewModel.showStarterPage(false);
     }
+
+    self.filename = ko.observable("");
 }
 
 return starterPageViewModel;

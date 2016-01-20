@@ -35,11 +35,7 @@ function navigationSectionViewModel(indexViewModel)
 
 	self.navigationSaveCharacter = function()
 	{
-		var character = self.indexViewModel.character(); 
-		var text = ko.toJSON(character);
-		var blob = new Blob([text], {type: "text/plain;charset=utf-8"});
-  		var filename = "battlestationscharacter_" + character.player() + "_" + character.name() + ".txt";
-  		filesaver(blob, filename);
+		self.indexViewModel.character().saveToFile(); 
  	};
 }
 
