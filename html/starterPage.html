@@ -1,4 +1,5 @@
-<div>
+<link rel="stylesheet" type="text/css" href="../css/starterpage.css">
+<div id="starterpage">
 	<p>
 		<select data-bind="
 			options: indexViewModel.languages,
@@ -10,7 +11,8 @@
 		<button data-bind="click: newCharacter, localizedtext: 'starterpage.startnew'"></button>
 	</p>
 	<p>
-		<button data-bind="click: loadCharacter, localizedtext: 'starterpage.loadcharacter'"></button>
-		<input type="file" data-bind="value: filename"></input>
+		<button data-bind="click: loadCharacter, localizedtext: 'starterpage.loadcharacter'"></button><br/>
+		<input data-bind="value: filetext" class="fullwidth"></input><br/>
+		<span data-bind="localizedtext: 'starterpage.loadinstructions'"></span>
 	</p>
 </div>

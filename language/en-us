@@ -4,6 +4,7 @@
 	
 	"starterpage.startnew": "Start New Character",
 	"starterpage.loadcharacter": "Load Exisiting Character",
+	"starterpage.loadinstructions": "Insert contents of your saved character here (I've not figured out how to load a text file yet)",
 	
 	"navigation.startover": "Start Over",
 	"navigation.printcharacter": "Print Character",

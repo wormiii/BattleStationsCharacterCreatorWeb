@@ -10,7 +10,8 @@ function navigationSectionViewModel(indexViewModel)
 
 	self.navigationStartover = function()
 	{
-        self.indexViewModel.showStarterPage(true);
+		self.filetext = ko.observable("");	
+		self.indexViewModel.showStarterPage(true);
 	};
 	
 	self.navigationPrintcharacter = function()
