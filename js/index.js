@@ -13,8 +13,8 @@ requirejs.config({
 });
 
 require(
-['knockout', 'jquery', 'lodash', './js/indexViewModel', '../js/charactersection'], 
-function(ko, $, _, indexViewModel, characterSectionViewModel) 
+['knockout', 'jquery', 'lodash', './js/indexViewModel'], 
+function(ko, $, _, indexViewModel) 
 {
     var vm = new indexViewModel();
 
@@ -40,34 +40,6 @@ function(ko, $, _, indexViewModel, characterSectionViewModel)
         }
     };
 
-
-
-
-    self.characterAttributes = ko.observableArray([
-        new characterSectionViewModel(vm, "character.section.general.label"),
-        new characterSectionViewModel(vm, "character.section.items.label")
-    ]);
-
-    _.forEach(
-        self.characterAttributes(), 
-        function(item)
-        {
-            item.pageVisible = ko.observable(false);
-            item.selectPage = function()
-            {
-                _.forEach(
-                    self.characterAttributes(),
-                    function(subItem)
-                    {
-                        subItem.pageVisible(false);
-                    }
-                );
-                item.pageVisible(true);
-            };
-        }
-    );
-
-    self.characterAttributes()[0].selectPage();
 
 
 

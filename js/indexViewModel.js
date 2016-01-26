@@ -1,6 +1,6 @@
 define(
-['knockout', '../js/character', 'text!../language/en-us', 'text!../language/pg-lt'], 
-function(ko, characterViewModel, en_ustext, pg_lttext) 
+['knockout', '../js/character', '../js/charactersection', 'text!../language/en-us', 'text!../language/pg-lt'], 
+function(ko, characterViewModel, characterSectionViewModel, en_ustext, pg_lttext) 
 {
 
 function indexViewModel()
@@ -56,6 +56,32 @@ function indexViewModel()
     {
         self.indexViewModel.character().saveToFile(); 
     };
+
+    // character sections
+    self.characterAttributes = ko.observableArray([
+        new characterSectionViewModel(self, "character.section.general.label"),
+        new characterSectionViewModel(self, "character.section.items.label")
+    ]);
+
+    _.forEach(
+        self.characterAttributes(), 
+        function(item)
+        {
+            item.selectPage = function()
+            {
+                _.forEach(
+                    self.characterAttributes(),
+                    function(subItem)
+                    {
+                        subItem.pageVisible(false);
+                    }
+                );
+                item.pageVisible(true);
+            };
+        }
+    );
+
+    self.characterAttributes()[0].selectPage();
 
     // localization stuff
     var currentlanguage;
