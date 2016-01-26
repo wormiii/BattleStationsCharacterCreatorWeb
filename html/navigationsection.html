@@ -1,7 +1,7 @@
 <div id="navigationsection" class="flexrow">
 	<button data-bind="
 		localizedtext: 'navigation.startover',
-		enable: !indexViewModel.showStarterPage(),
+		enable: !showStarterPage(),
 		click: navigationStartover"></button>
 	<button data-bind="
 		localizedtext: 'navigation.gotogorilla', 
@@ -14,10 +14,10 @@
 		click: navigationBugreport"></button>
 	<button data-bind="
 		localizedtext: 'navigation.printcharacter',
-		enable: !indexViewModel.showStarterPage(),
+		enable: !showStarterPage(),
 		click: navigationPrintcharacter"></button>
 	<button data-bind="
 		localizedtext: 'navigation.savecharacter',
-		enable: !indexViewModel.showStarterPage(), 
+		enable: !showStarterPage(), 
 		click: navigationSaveCharacter"></button>
 </div>

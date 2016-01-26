@@ -13,8 +13,8 @@ requirejs.config({
 });
 
 require(
-['knockout', 'jquery', 'lodash', './js/indexViewModel', './js/starterPage', './js/characterpage', './js/navigationsection'], 
-function(ko, $, _, indexViewModel, starterPageViewModel, characterPageViewModel, navigationSectionViewModel) 
+['knockout', 'jquery', 'lodash', './js/indexViewModel', '../js/charactersection'], 
+function(ko, $, _, indexViewModel, characterSectionViewModel) 
 {
     var vm = new indexViewModel();
 
@@ -40,17 +40,77 @@ function(ko, $, _, indexViewModel, starterPageViewModel, characterPageViewModel,
         }
     };
 
-    // start page - what shows up first
-    ko.components.register('starterpage', 
+
+
+
+    self.characterAttributes = ko.observableArray([
+        new characterSectionViewModel(vm, "character.section.general.label"),
+        new characterSectionViewModel(vm, "character.section.items.label")
+    ]);
+
+    _.forEach(
+        self.characterAttributes(), 
+        function(item)
+        {
+            item.pageVisible = ko.observable(false);
+            item.selectPage = function()
+            {
+                _.forEach(
+                    self.characterAttributes(),
+                    function(subItem)
+                    {
+                        subItem.pageVisible(false);
+                    }
+                );
+                item.pageVisible(true);
+            };
+        }
+    );
+
+    self.characterAttributes()[0].selectPage();
+
+
+
+
+
+
+    // list of character attributes selectable
+    ko.components.register('characterattributelist', 
     {
         viewModel: 
         {
-            createViewModel: function(params, componentInfo) 
+            viewModel: function(params) 
             {
-                return new starterPageViewModel(vm);
+                return vm;
             }
         },
-        template: {require: "text!./html/starterPage.html" }
+        template: {require: "text!./html/characterattributelist.html" }
+    });
+
+    // character - general stuff
+    ko.components.register('charactergeneral', 
+    {
+        viewModel: 
+        {
+            viewModel: function(params) 
+            {
+                return vm;
+            }
+        },
+        template: {require: "text!./html/charactergeneral.html" }
+    });
+
+    // character - items
+    ko.components.register('characteritems', 
+    {
+        viewModel: 
+        {
+            viewModel: function(params) 
+            {
+                return vm;
+            }
+        },
+        template: {require: "text!./html/characteritems.html" }
     });
 
     // main section that users create character
@@ -58,9 +118,9 @@ function(ko, $, _, indexViewModel, starterPageViewModel, characterPageViewModel,
     {
         viewModel: 
         {
-            createViewModel: function(params, componentInfo) 
+            viewModel: function(params) 
             {
-                return new characterPageViewModel(vm);
+                return vm;
             }
         },
         template: {require: "text!./html/characterpage.html" }
@@ -71,12 +131,25 @@ function(ko, $, _, indexViewModel, starterPageViewModel, characterPageViewModel,
     {
         viewModel: 
         {
-            createViewModel: function(params, componentInfo) 
+            viewModel: function(params) 
             {
-                return new navigationSectionViewModel(vm);
+                return vm;
             }
         },
         template: {require: "text!./html/navigationsection.html" }
+    });
+
+    // start page - what shows up first
+    ko.components.register('starterpage', 
+    {
+        viewModel: 
+        {
+            viewModel: function(params) 
+            {
+                return vm;
+            }
+        },
+        template: {require: "text!./html/starterPage.html" }
     });
 
     ko.applyBindings(vm);

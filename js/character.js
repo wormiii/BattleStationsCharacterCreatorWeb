@@ -3,7 +3,7 @@ define(
 function($, ko, kom, filesaver) 
 {
 
-function characterViewModel(indexViewModel)
+function characterViewModel()
 {
     var self = this;
 
