@@ -13,38 +13,13 @@ requirejs.config({
 });
 
 require(
-['knockout', 'jquery', 'lodash', './js/indexViewModel'], 
-function(ko, $, _, indexViewModel) 
+['knockout', 'jquery', 'lodash', './js/indexviewmodel', './js/localizedtextbinding'], 
+function(ko, $, _, indexViewModel, localizedtextBinding) 
 {
     var vm = new indexViewModel();
 
     // localized text binder
-    ko.bindingHandlers.localizedtext = 
-    {
-        init: function(element, valueAccessor, allBindings, viewModel, bindingContext)
-        {
-        },
-        update: function(element, valueAccessor, allBindings, viewModel, bindingContext)
-        {
-            var value = ko.unwrap(valueAccessor());
-            var localizedText = vm.selectedlanguage()[value];
-            if (localizedText == null)
-            {
-                localizedText = vm.enus()[value];
-                if (localizedText == null)
-                {
-                    localizedText = "no localized text for this field, please file a bug report";
-                }
-            }
-            $(element).text(localizedText);
-        }
-    };
-
-
-
-
-
-
+    ko.bindingHandlers.localizedtext = localizedtextBinding("en-us");
 
     // list of character attributes selectable
     ko.components.register('characterattributelist', 

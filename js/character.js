@@ -1,6 +1,6 @@
 define(
-['jquery', 'knockout', 'knockoutmapping', 'filesaver'], 
-function($, ko, kom, filesaver) 
+['jquery', 'knockout', 'knockoutmapping'], 
+function($, ko, kom) 
 {
 
 function characterViewModel()
@@ -14,17 +14,14 @@ function characterViewModel()
     self.xp = ko.observable(560);
     self.prestige = ko.observable(1000);
 
-    self.saveToFile = function()
+    self.saveToJSON = function()
     {
-        var text = ko.toJSON(self);
-        var blob = new Blob([text], {type: "text/plain;charset=utf-8"});
-        var filename = "battlestationscharacter_" + self.player() + "_" + self.name() + ".txt";
-        filesaver(blob, filename);
+        return ko.toJSON(self);
     };
 
-    self.loadFromFile = function(filetext)
+    self.loadFromJSON = function(jsontext)
     {
-        kom.fromJSON(filetext, {}, self); 
+        kom.fromJSON(jsontext, {}, self); 
     }
 }
 

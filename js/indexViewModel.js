@@ -1,6 +1,6 @@
 define(
-['knockout', '../js/character', '../js/charactersection', 'text!../language/en-us', 'text!../language/pg-lt'], 
-function(ko, characterViewModel, characterSectionViewModel, en_ustext, pg_lttext) 
+['knockout', '../js/character', '../js/charactersection', 'filesaver'], 
+function(ko, characterViewModel, characterSectionViewModel, filesaver) 
 {
 
 function indexViewModel()
@@ -34,7 +34,7 @@ function indexViewModel()
     
     self.navigationPrintcharacter = function()
     {
-        //todo
+        window.open("./print.html");
     };
 
     self.navigationGotogorilla = function()
@@ -54,7 +54,10 @@ function indexViewModel()
 
     self.navigationSaveCharacter = function()
     {
-        self.character().saveToFile(); 
+        var jsonText = self.character().saveToJSON(); 
+        var blob = new Blob([jsonText], {type: "text/plain;charset=utf-8"});
+        var filename = "battlestationscharacter_" + self.player() + "_" + self.name() + ".txt";
+        filesaver(blob, filename);
     };
 
     // character sections
@@ -83,29 +86,13 @@ function indexViewModel()
 
     self.characterAttributes()[0].selectPage();
 
-    // localization stuff
-    var currentlanguage;
-    self.languages = ko.observableArray();
-    self.selectedlanguage = ko.observable();
-
-    // load languages
-    var defaultLanguage = loadLanguage(en_ustext)
-    self.languages().push(defaultLanguage);
-    self.selectedlanguage(defaultLanguage);
-    self.languages().push(loadLanguage(pg_lttext));
-
     // helpers
-    function loadLanguage(jsonText)
-    {
-        return $.parseJSON(jsonText);
-    }
-
     function loadCharacter(characterText)
     {
         var character = new characterViewModel();
         if (characterText != null)
         {
-            character.loadFromFile(self.filetext());
+            character.loadFromJSON(self.filetext());
         }
         self.character(character);
         self.showStarterPage(false);
