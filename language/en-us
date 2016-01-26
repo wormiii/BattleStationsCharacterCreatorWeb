@@ -24,6 +24,8 @@
 	"character.section.items.label": "Items",
 	"character.section.specialabilities.label": "Special Abilities",
 
+	"print.needtostartover": "Click this button to get started.",
+
 	"test.test": "testtest",
 	"enus.only": "onlyonly"
 }

@@ -8,7 +8,7 @@ function indexViewModel()
     var self = this;
 
     // the character - empty to start with
-    self.character = ko.observable(new characterViewModel(self));
+    self.character = ko.observable(new characterViewModel());
 
     // showing startup or character in progress
     self.showStarterPage = ko.observable(true);
@@ -34,6 +34,10 @@ function indexViewModel()
     
     self.navigationPrintcharacter = function()
     {
+        var language = selectedlanguage().code;
+        var character = self.character().saveToJSON();
+        window.sessionStorage.setItem("language", language);
+        window.sessionStorage.setItem("character", character);
         window.open("./print.html");
     };
 

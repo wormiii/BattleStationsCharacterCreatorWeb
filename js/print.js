@@ -13,11 +13,31 @@ requirejs.config({
 });
 
 require(
-['knockout', 'jquery', 'lodash', './js/localizedtextbinding'], 
-function(ko, $, _, localizedtextBinding)
+['knockout', 'jquery', 'lodash', './js/localizedtextbinding', '../js/character'], 
+function(ko, $, _, localizedtextBinding, characterViewModel)
 {
 
-ko.bindingHandlers.localizedtext = localizedtextBinding("pg-lt");
+var startOver;
+var characterJSON = window.sessionStorage.getItem("character");
+var selectedLanguage = window.sessionStorage.getItem("language");
+var localizedText;
+var character;
+
+if ((characterJSON == null) || (selectedLanguage == null))
+{
+    startOver = true;
+    localizedText = localizedtextBinding("en-us");
+    character = new characterViewModel();
+}
+else
+{
+    startOver = false;
+    localizedText = localizedtextBinding(selectedLanguage);
+    character = new characterViewModel();
+    character.loadFromJSON(characterJSON);
+}    
+
+ko.bindingHandlers.localizedtext = localizedText;
 
 function printViewModel()
 {
@@ -26,6 +46,13 @@ function printViewModel()
     self.aaa = ko.observable(111);
     self.bbb = ko.observable(222);
     self.ccc = ko.observable(333);
+    self.character = ko.observable(character);
+    self.showStartOver = ko.observable(startOver);
+
+    self.navigationStartover = function()
+    {
+        window.open("./index.html");
+    };
 }
 
 
