@@ -54,7 +54,7 @@ function indexViewModel()
 
     self.navigationSaveCharacter = function()
     {
-        self.indexViewModel.character().saveToFile(); 
+        self.character().saveToFile(); 
     };
 
     // character sections
