@@ -66,7 +66,7 @@ function(ko, $, _, indexViewModel)
         {
             viewModel: function(params) 
             {
-                return vm;
+                return vm.characterAttributes()[0];
             }
         },
         template: {require: "text!./html/charactergeneral.html" }
@@ -79,7 +79,7 @@ function(ko, $, _, indexViewModel)
         {
             viewModel: function(params) 
             {
-                return vm;
+                return vm.characterAttributes()[1];
             }
         },
         template: {require: "text!./html/characteritems.html" }

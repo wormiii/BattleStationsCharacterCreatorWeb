@@ -1,29 +1,26 @@
-bbb
-<!--
-<div data-bind="visible: pageVisible">
+<div data-bind="visible: pageVisible, with: indexViewModel().character()">
 	<p>
 		<span data-bind="localizedtext: 'character.section.general.player'"></span>
-		<input data-bind="value: indexViewModel().character().player"></input>
+		<input data-bind="value: player"></input>
 	</p>
 	<p>
 		<span data-bind="localizedtext: 'character.section.general.name'"></span>
-		<input data-bind="value: indexViewModel().character().name"></input>
+		<input data-bind="value: name"></input>
 	</p>
 	<p>
 		<span data-bind="localizedtext: 'character.section.general.rank'"></span>
-		<input data-bind="value: indexViewModel().character().rank"></input>
+		<input data-bind="value: rank"></input>
 	</p>
 	<p>
 		<span data-bind="localizedtext: 'character.section.general.credits'"></span>
-		<input data-bind="value: indexViewModel().character().credits"></input>
+		<input data-bind="value: credits"></input>
 	</p>
 	<p>
 		<span data-bind="localizedtext: 'character.section.general.xp'"></span>
-		<input data-bind="value: indexViewModel().character().xp"></input>
+		<input data-bind="value: xp"></input>
 	</p>
 	<p>
 		<span data-bind="localizedtext: 'character.section.general.prestige'"></span>
-		<input data-bind="value: indexViewModel().character().prestige"></input>
+		<input data-bind="value: prestige"></input>
 	</p>
 </div>
--->
